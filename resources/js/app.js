@@ -1,9 +1,14 @@
 import './bootstrap';
-import {createApp} from 'vue'
+import {createApp} from 'vue/dist/vue.esm-bundler'
+import home from './components/Home.vue'
 
-import MainComponent from '../js/components/MainComponent.vue'
-const app = createApp({});
+import Alpine from 'alpinejs';
 
-app.component('MainComponent',MainComponent);
+window.Alpine = Alpine;
 
-app.mount('#app');
+Alpine.start();
+const app = createApp({})
+
+app.component('home', home)
+
+app.mount('#app')

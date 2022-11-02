@@ -1,10 +1,10 @@
 <template>
-    <h1>CRM</h1>
+  <h1>omidrayaneh</h1>
 </template>
 
 <script>
 export default {
-    name: "MainComponent"
+    name: "Home"
 }
 </script>
 

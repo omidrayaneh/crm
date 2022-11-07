@@ -6,7 +6,18 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
+// import Vue from 'vue'
+// import VueRouter from 'vue-router'
+//
+//
+// import Navbar from "./components/Navbar";
+// import InfoComponent from "./components/InfoComponent";
+// import axios from 'axios'
+//
+// Vue.use(VueRouter)
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +30,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('info', require('./components/InfoComponent.vue').default);
+Vue.component('home', require('./components/Home.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

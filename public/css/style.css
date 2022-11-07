@@ -119,3 +119,10 @@ body {
 .bg-navbar{
     background-color: #f64747;
 }
+.bg-menu{
+    background-color: #d8e3da;
+}
+.nav-a{
+    text-decoration: none !important;
+    color: black !important;
+}

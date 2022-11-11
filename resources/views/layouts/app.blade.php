@@ -101,7 +101,7 @@
                                    <ul class="dropdown-menu  dropdown-menu-right text-right  " >
                                        <li><a class="dropdown-item" href="/customer">{{__('variable.Customer')}}</a></li>
                                        <li><a class="dropdown-item" href="/vendor">{{__('variable.Vendor')}}</a></li>
-                                       <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                       <li><a class="dropdown-item" href="/product">{{__('variable.Product')}}</a></li>
                                    </ul>
                                </div>
                            </div>

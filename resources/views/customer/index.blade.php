@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="card-body text-right">
-        <info/>
+        <customer />
     </div>
 @endsection

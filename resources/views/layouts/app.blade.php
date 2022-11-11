@@ -19,7 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" >
+    <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body dir="rtl">
 <div id="app">
@@ -28,7 +29,9 @@
             <a class="navbar-brand text-white" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -45,16 +48,19 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link text-white mr-auto" href="{{ route('login') }}">{{ __('auth.Login') }}</a>
+                            <a class="nav-link text-white mr-auto"
+                               href="{{ route('login') }}">{{ __('auth.Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('register') }}">{{ __('auth.Register') }}</a>
+                                <a class="nav-link text-white"
+                                   href="{{ route('register') }}">{{ __('auth.Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -81,9 +87,26 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header text-right" >
-                            <a href="/home" class="nav-a">{{__('auth.Home')}}</a>
-                            <a href="/info" class="nav-a">{{__('auth.Info')}}</a>
+                        <div class="card-header text-right">
+                           <div class="row">
+                               <div class="col-1">
+                                   <a href="/home" class="nav-a">{{__('auth.Home')}}</a>
+                               </div>
+
+                               <div class="dropdown col-1 " >
+                                   <a class="nav-a dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                      aria-expanded="false">
+                                       {{__('auth.Info')}}
+                                   </a>
+                                   <ul class="dropdown-menu  dropdown-menu-right text-right  " >
+                                       <li><a class="dropdown-item" href="/customer">{{__('variable.Customer')}}</a></li>
+                                       <li><a class="dropdown-item" href="/vendor">{{__('variable.Vendor')}}</a></li>
+                                       <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                   </ul>
+                               </div>
+                           </div>
+
+
                         </div>
                         @yield('content')
 
@@ -95,5 +118,7 @@
         </div>
     </main>
 </div>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('js/flasher.min.js')}}"></script>
 </body>
 </html>

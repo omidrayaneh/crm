@@ -122,7 +122,21 @@ body {
 .bg-menu{
     background-color: #d8e3da;
 }
+
 .nav-a{
     text-decoration: none !important;
     color: black !important;
+}
+.greenyellow{
+    color: #a7fa02;
+}
+.red{
+    color: red;
+}
+.blue{
+    color: blue;
+}
+
+.deleteRecord{
+   cursor: pointer;
 }

@@ -21,6 +21,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @yield('js')
+    @yield('css')
 </head>
 <body dir="rtl">
 <div id="app">
@@ -90,18 +92,30 @@
                         <div class="card-header text-right">
                            <div class="row">
                                <div class="col-1">
-                                   <a href="/home" class="nav-a">{{__('auth.Home')}}</a>
+                                   <a href="/home" class="nav-a">{{__('variable.Home')}}</a>
                                </div>
 
                                <div class="dropdown col-1 " >
                                    <a class="nav-a dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                       aria-expanded="false">
-                                       {{__('auth.Info')}}
+                                       {{__('variable.Info')}}
                                    </a>
-                                   <ul class="dropdown-menu  dropdown-menu-right text-right  " >
+                                   <ul class="dropdown-menu  dropdown-menu-right text-right  ">
                                        <li><a class="dropdown-item" href="/customer">{{__('variable.Customer')}}</a></li>
                                        <li><a class="dropdown-item" href="/vendor">{{__('variable.Vendor')}}</a></li>
                                        <li><a class="dropdown-item" href="/product">{{__('variable.Product')}}</a></li>
+                                   </ul>
+                               </div>
+                               <div class="dropdown col-1 " >
+                                   <a class="nav-a dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                      aria-expanded="false">
+                                       {{__('variable.Support')}}
+                                   </a>
+                                   <ul class="dropdown-menu  dropdown-menu-right text-right  " >
+                                       <li><a class="dropdown-item" href="/supports">{{__('variable.Supports')}}</a></li>
+                                       <li><a class="dropdown-item" href="/vendor">{{__('variable.Events')}}</a></li>
+                                       <li><a class="dropdown-item" href="/product">{{__('variable.Latest_Support')}}</a></li>
+                                       <li><a class="dropdown-item" href="/product">{{__('variable.Actions')}}</a></li>
                                    </ul>
                                </div>
                            </div>
@@ -118,6 +132,8 @@
         </div>
     </main>
 </div>
+
+<script src="/js/dt.js"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('js/flasher.min.js')}}"></script>
 </body>

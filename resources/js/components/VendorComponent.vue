@@ -53,7 +53,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export default {
     data(){
         return{
-            laravelData:[],
+            laravelData:{},
             page :1,
             csrf: document.head.querySelector('meta[name="csrf-token"]').content,
         }

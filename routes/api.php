@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('get-customer','CustomerController@getData');
 Route::get('get-vendor','VendorController@getData');
 Route::get('get-product','ProductController@getData');
+Route::get('get-support','SupportController@getData');

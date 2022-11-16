@@ -1,7 +1,7 @@
 <template>
 <div class="card-body">
     <div class="text-left">
-        <a class="btn btn-light"  :href="'/customer/create'">
+        <a class="btn btn-light"  :href="'/supports/create'">
             <i class="fa fa-plus greenyellow"></i> جدید
         </a>
     </div>
@@ -10,38 +10,41 @@
         <thead>
         <tr class="text-center">
             <th scope="col">#</th>
-            <th scope="col"> نام مشتری</th>
-            <th scope="col">ایمیل</th>
-            <th scope="3">آدرس</th>
-            <th scope="col">تلفن</th>
-            <th scope="col">نام مسئول</th>
-            <th scope="col">تاریخ</th>
-            <th scope="col">عملیات</th>
+            <th scope="col">مشتری</th>
+            <th scope="col">کاربر</th>
+            <th scope="col">تاریخ شروع</th>
+            <th scope="3">تاریخ پایان</th>
+            <th scope="col">وضعیت</th>
+            <th scope="col">مبلغ</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="text-center" v-for="(customer,key) in laravelData.data">
+        <tr class="text-center" v-for="(support,key) in laravelData.data">
             <td v-if="page ==1" >
                 {{ key + 1}}
             </td>
             <td v-else>
                 {{(((page-1) *9) + key + 1)}}
             </td>
-            <td >{{customer.name}}</td>
-            <td >{{customer.email}}</td>
-            <td >{{customer.address}}</td>
-            <td >{{customer.phone}}</td>
-            <td >{{customer.user.name}}</td>
-            <td >{{date(customer.created_at)}}</td>
+            <td >{{support.customer.name}}</td>
+            <td >{{support.user.name}}</td>
+            <td >{{support.start_date}}</td>
+            <td >{{support.end_date}}</td>
+            <td v-if="support.status === 0">عادی</td>
+            <td v-else-if="support.status ===1">تعلیق</td>
+            <td v-else-if="support.status === 2">پایان</td>
+            <td v-else-if="support.status === 3">گارانتی</td>
+            <td v-else-if="support.status === 4">منتظر خرید</td>
+            <td v-else-if="support.status === 5">در حال بستن</td>
+            <td >{{groupDigit(support.price)}}</td>
             <td>
-                <a :href="'/customer/'+customer.id + '/edit'" data-toggle="tooltip"
+                <a :href="'/supports/'+support.id + '/edit'" data-toggle="tooltip"
                    data-title="ویرایش">
                     <span class="fa fa-edit blue"></span>
-
                 </a>
                 |
 
-                <a @click="deleted(customer.id)" class="deleteRecord">
+                <a @click="deleted(support.id)" class="deleteRecord">
                     <span class="fa fa-trash red"></span>
                 </a>
 
@@ -72,9 +75,20 @@ export default {
 
     },
     methods:{
+        groupDigit(num){
+            num = Number(num)
+            var str = num.toString().split('.');
+            if (str[0].length >= 5) {
+                str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+            }
+            if (str[1] && str[1].length >= 5) {
+                str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+            }
+            return str.join('.');
+        },
         getData(page = 1){
             this.page = page;
-            axios.get('/api/get-customer?page=' + page)
+            axios.get('/api/get-support?page=' + page)
                 .then(res =>{
                    this.laravelData = res.data.data
                 })
@@ -101,7 +115,7 @@ export default {
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/customer/'+id)
+                    axios.delete('/supports/'+id)
                         .then(res =>{
                             window.location.reload()
                         })

@@ -3,6 +3,7 @@
 return [
     'Customer_Name' => 'نام مشتری',
     'Customer' => 'مشتری',
+    'Info' => 'اطلاعات پایه',
     'Vendor' => 'همکار',
     'Product' => 'محصول',
     'Vendor_Name' => 'نام همکار',
@@ -15,4 +16,13 @@ return [
     'Save' => 'ذخیره',
     'User_Name' => 'نام مسئول',
     'Select' => 'انتخاب کنید ...',
+    'Home' => 'خانه',
+    'Supports' => 'پشتیبانی ها',
+    'Support' => 'پشتیبانی',
+    'Events' => 'رویدادها',
+    'Latest_Support' => 'آخرین پشتیبانی ها',
+    'Actions' => 'فعالیت ها',
+    'Start_date' => 'تاریخ شروع',
+    'End_date' => 'تاریخ پایان',
+    'Status' => 'وضعیت',
 ];

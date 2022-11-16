@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequired;
 use App\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProductRequired $request)
     {
         $inputs = $request->only(['name','price']);
 
@@ -57,7 +57,7 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ProductRequired $request, $id)
     {
         $inputs = $request->only(['name','price']);
 

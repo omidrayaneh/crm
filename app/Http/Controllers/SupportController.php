@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\SupportRequired;
 use App\Support;
 use Illuminate\Http\Request;
 
@@ -32,15 +33,15 @@ class SupportController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SupportRequired $request)
     {
-        $inputs = $request->only(['customer_id','start-date','end-date','status','price']);
+        $inputs = $request->only(['customer_id','start_date','end_date','status','price']);
 
         $support = new Support();
         $support->customer_id = $inputs['customer_id'];
         $support->user_id =auth()->id();
-        $support->start_date = $inputs['start-date'];
-        $support->end_date = $inputs['end-date'];
+        $support->start_date = $inputs['start_date'];
+        $support->end_date = $inputs['end_date'];
         $support->status = $inputs['status'];
         $support->price = $inputs['price'];
 
@@ -63,17 +64,17 @@ class SupportController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(SupportRequired $request, $id)
     {
-        $inputs = $request->only(['customer_id','start-date','end-date','status','price']);
+        $inputs = $request->only(['customer_id','start_date','end_date','status','price']);
 
 
 
         $support = Support::findOrFail($id);
         $support->customer_id = $inputs['customer_id'];
         $support->user_id =auth()->id();
-        $support->start_date = $inputs['start-date'];
-        $support->end_date = $inputs['end-date'];
+        $support->start_date = $inputs['start_date'];
+        $support->end_date = $inputs['end_date'];
         $support->status = $inputs['status'];
         $support->price = $inputs['price'];
 

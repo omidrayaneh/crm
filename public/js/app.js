@@ -2049,6 +2049,17 @@ __webpack_require__.r(__webpack_exports__);
     this.getData();
   },
   methods: {
+    groupDigit: function groupDigit(num) {
+      num = Number(num);
+      var str = num.toString().split('.');
+      if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+      }
+      if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+      }
+      return str.join('.');
+    },
     getData: function getData() {
       var _this = this;
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
@@ -2447,7 +2458,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.laravelData.data, function (product, key) {
     return _c("tr", {
       staticClass: "text-center"
-    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.price))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.date(product.created_at)))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.groupDigit(product.price)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.date(product.created_at)))]), _vm._v(" "), _c("td", [_c("a", {
       attrs: {
         href: "/product/" + product.id + "/edit",
         "data-toggle": "tooltip",

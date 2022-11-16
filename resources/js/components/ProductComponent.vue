@@ -24,7 +24,7 @@
                 {{(((page-1) *9) + key + 1)}}
             </td>
             <td >{{product.name}}</td>
-            <td >{{product.price}}</td>
+            <td >{{groupDigit(product.price)}}</td>
             <td >{{date(product.created_at)}}</td>
             <td>
                 <a :href="'/product/'+product.id + '/edit'" data-toggle="tooltip"
@@ -65,6 +65,17 @@ export default {
         this.getData();
     },
     methods:{
+        groupDigit(num){
+            num = Number(num)
+            var str = num.toString().split('.');
+            if (str[0].length >= 5) {
+                str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+            }
+            if (str[1] && str[1].length >= 5) {
+                str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+            }
+            return str.join('.');
+        },
         getData(page = 1){
             this.page = page;
             axios.get('/api/get-product?page=' + page)

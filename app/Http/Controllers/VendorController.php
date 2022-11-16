@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VendorRequired;
 use App\Vendor;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,7 @@ class VendorController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(VendorRequired $request)
     {
         $inputs = $request->only(['name']);
 
@@ -57,7 +58,7 @@ class VendorController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(VendorRequired $request, $id)
     {
         $inputs = $request->only(['name']);
 

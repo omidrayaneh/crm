@@ -10,7 +10,7 @@
                 <label for="name" class="col-md-4 col-form-label text-md-left">{{ __('variable.product_Name') }}</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$product->name) }}" required autocomplete="name" autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$product->name) }}"  autocomplete="name" autofocus>
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
                 <label for="name" class="col-md-4 col-form-label text-md-left">{{ __('variable.Product_Name') }}</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price',$product->price) }}" required autocomplete="price" autofocus>
+                    <input id="name" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price',$product->price) }}"  autocomplete="price" autofocus>
 
                     @error('price')
                     <span class="invalid-feedback" role="alert">

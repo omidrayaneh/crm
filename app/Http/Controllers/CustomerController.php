@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\createCustomer;
+use App\Http\Requests\editCustomer;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -31,7 +33,7 @@ class CustomerController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(createCustomer $request)
     {
         $inputs = $request->only(['name','email','address','phone','user_name']);
 
@@ -64,7 +66,7 @@ class CustomerController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(editCustomer $request, $id)
     {
         $inputs = $request->only(['name','email','address','phone','user_name']);
 

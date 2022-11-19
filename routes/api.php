@@ -22,3 +22,5 @@ Route::get('get-customer','CustomerController@getData');
 Route::get('get-vendor','VendorController@getData');
 Route::get('get-product','ProductController@getData');
 Route::get('get-support','SupportController@getData');
+Route::get('get-task','TaskController@getData');
+Route::get('get-search-task','TaskController@searchTask');

@@ -31,7 +31,8 @@
             <td >{{customer.email}}</td>
             <td >{{customer.address}}</td>
             <td >{{customer.phone}}</td>
-            <td >{{customer.user.name}}</td>
+            <td v-if="customer.user">{{customer.user.name}}</td>
+            <td v-else></td>
             <td >{{date(customer.created_at)}}</td>
             <td>
                 <a :href="'/customer/'+customer.id + '/edit'" data-toggle="tooltip"

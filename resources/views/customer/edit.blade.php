@@ -67,7 +67,7 @@
                     <select id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name"  autocomplete="user_name">
                         <option value="">{{(__('variable.Select'))}}</option>
                         @foreach($users as $user)
-                        <option @if($customer->user->id == $user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>
+                        <option @if($customer->user && $customer->user->id == $user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                     </select>
                     @error('user_name')

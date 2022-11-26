@@ -2381,7 +2381,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.laravelData.data, function (customer, key) {
     return _c("tr", {
       staticClass: "text-center"
-    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.phone))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.date(customer.created_at)))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.address))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(customer.phone))]), _vm._v(" "), customer.user ? _c("td", [_vm._v(_vm._s(customer.user.name))]) : _c("td"), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.date(customer.created_at)))]), _vm._v(" "), _c("td", [_c("a", {
       attrs: {
         href: "/customer/" + customer.id + "/edit",
         "data-toggle": "tooltip",

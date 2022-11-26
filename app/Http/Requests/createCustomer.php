@@ -25,22 +25,22 @@ class createCustomer extends FormRequest
     {
         return [
             'name'=>'required',
-            'email'=>'required|email',
-            'address'=>'required',
-            'phone'=>'required|numeric',
-            'user_name'=>'required',
+          //  'email'=>'required|email',
+          //  'address'=>'required',
+           // 'phone'=>'required|numeric',
+           // 'user_name'=>'required',
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'نام مشتری الزامیست',
-            'email.required' => 'ایمیل الزامیست',
-            'email.email' => 'ایمیل را صحیح وارد کنید',
-            'address.required' => 'آدرس الزامیست',
-            'phone.required' => 'شماره تلفن الزامیست',
-            'phone.numeric' => 'شماره تلفن را صحیح وارد کنید',
-            'user_name.required' => 'نام مسئول الزامیست',
+           // 'email.required' => 'ایمیل الزامیست',
+           // 'email.email' => 'ایمیل را صحیح وارد کنید',
+           // 'address.required' => 'آدرس الزامیست',
+           // 'phone.required' => 'شماره تلفن الزامیست',
+          //  'phone.numeric' => 'شماره تلفن را صحیح وارد کنید',
+           // 'user_name.required' => 'نام مسئول الزامیست',
         ];
     }
 }

@@ -26,7 +26,7 @@ class TaskController extends Controller
     }
     public function getData()
     {
-        $tasks =Task::with(['customer','user'])->paginate(2);
+        $tasks =Task::with(['customer','user'])->where('status',0)->paginate(2);
         $responce = [
             'data'=> $tasks,
             'message'=>'success'

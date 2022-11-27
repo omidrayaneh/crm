@@ -2300,7 +2300,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       laravelData: {},
       find: '',
-      status: '',
+      status: 0,
       csrf: document.head.querySelector('meta[name="csrf-token"]').content
     };
   },
@@ -2312,7 +2312,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     search: function search() {
       var _this = this;
-      console.log();
       axios.get('/api/get-search-task', {
         params: {
           description: this.find,
@@ -2320,6 +2319,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         _this.laravelData = res.data;
+      });
+    },
+    select: function select() {
+      var _this2 = this;
+      axios.get('/api/get-search-task', {
+        params: {
+          description: this.find,
+          status: this.status
+        }
+      }).then(function (res) {
+        _this2.laravelData = res.data;
       });
     },
     groupDigit: function groupDigit(num) {
@@ -2334,11 +2344,11 @@ __webpack_require__.r(__webpack_exports__);
       return str.join('.');
     },
     getData: function getData() {
-      var _this2 = this;
+      var _this3 = this;
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.page = page;
       axios.get('/api/get-task?page=' + page).then(function (res) {
-        _this2.laravelData = res.data.data;
+        _this3.laravelData = res.data.data;
       });
     },
     date: function date(time) {
@@ -2965,7 +2975,7 @@ var render = function render() {
       name: "status"
     },
     on: {
-      change: function change($event) {
+      change: [function ($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
           return o.selected;
         }).map(function (o) {
@@ -2973,7 +2983,7 @@ var render = function render() {
           return val;
         });
         _vm.status = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
-      }
+      }, _vm.select]
     }
   }, [_c("option", {
     attrs: {

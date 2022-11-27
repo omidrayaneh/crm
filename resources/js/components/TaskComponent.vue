@@ -5,7 +5,7 @@
           <input type="text" class="form-control" @input="search" v-model="find" placeholder="براساس نام مشتری یا شرح فعالیت یا تاریخ">
       </div>
       <div class="text-right col-2">
-          <select id="status" type="text" class="form-control" name="status"  v-model="status">
+          <select id="status" type="text" class="form-control" name="status"  v-model="status" @change="select">
               <option  value="0">جدید</option>
               <option value="1">در حال اجرا</option>
               <option value="2">پایان یافته</option>
@@ -73,7 +73,7 @@ export default {
         return{
             laravelData:{},
             find :'',
-            status :'',
+            status :0,
             csrf: document.head.querySelector('meta[name="csrf-token"]').content,
         }
     },
@@ -84,7 +84,6 @@ export default {
     },
     methods:{
         search(){
-            console.log()
             axios.get('/api/get-search-task',{
               params:{
                   description : this.find,
@@ -93,6 +92,16 @@ export default {
             }).then(res =>{
                     this.laravelData = res.data
                 })
+        },
+        select(){
+            axios.get('/api/get-search-task',{
+                params:{
+                    description : this.find,
+                    status : this.status
+                }
+            }).then(res =>{
+                this.laravelData = res.data
+            })
         },
         groupDigit(num){
             num = Number(num)

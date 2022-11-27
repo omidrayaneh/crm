@@ -23,4 +23,6 @@ Route::get('get-vendor','VendorController@getData');
 Route::get('get-product','ProductController@getData');
 Route::get('get-support','SupportController@getData');
 Route::get('get-task','TaskController@getData');
+Route::get('get-event','EventController@getData');
 Route::get('get-search-task','TaskController@searchTask');
+Route::get('get-search-customer','EventController@searchEvent');

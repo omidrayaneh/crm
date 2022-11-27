@@ -7,6 +7,7 @@ use App\Http\Requests\createCustomer;
 use App\Http\Requests\editCustomer;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -43,6 +44,7 @@ class CustomerController extends Controller
         $customer->name = $inputs['name'];
         $customer->email = $inputs['email'];
         $customer->user_id = $inputs['user_name'];
+        $customer->login_user_id = Auth::id();
         $customer->phone = $inputs['phone'];
         $customer->address =$inputs['address'];
 

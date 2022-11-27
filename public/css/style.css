@@ -136,7 +136,12 @@ body {
 .blue{
     color: blue;
 }
-
+.yellow{
+    color: yellow;
+}
+.orangered{
+    color: orangered;
+}
 .deleteRecord{
    cursor: pointer;
 }

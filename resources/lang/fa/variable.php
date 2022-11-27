@@ -3,6 +3,7 @@
 return [
     'Customer_Name' => 'نام مشتری',
     'Customer' => 'مشتری',
+    'Date' => 'تاریخ',
     'Info' => 'اطلاعات پایه',
     'Vendor' => 'همکار',
     'Product' => 'محصول',
@@ -27,4 +28,5 @@ return [
     'Start_date' => 'تاریخ شروع',
     'End_date' => 'تاریخ پایان',
     'Status' => 'وضعیت',
+    'Cost' => 'هزینه',
 ];

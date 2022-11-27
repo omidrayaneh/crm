@@ -1,45 +1,48 @@
 <template>
 <div class="card-body">
-    <div class="text-left">
-        <a class="btn btn-light"  :href="'/product/create'">
-            <i class="fa fa-plus greenyellow"></i> جدید
-        </a>
-    </div>
-<!--    <a :href="'/'">444</a>-->
+  <div class="row mb-2" style="margin-top: -35px">
+      <div class="text-right col-4">
+          <input type="text" class="form-control" @input="search" v-model="find" placeholder=" نام مشتری ">
+      </div>
+
+<!--      <div class="text-left col">-->
+<!--          <a class="btn btn-light"  :href="'/events/create'">-->
+<!--              <i class="fa fa-plus greenyellow"></i> جدید-->
+<!--          </a>-->
+<!--      </div>-->
+  </div>
     <table class="table table-striped table-hover">
         <thead>
         <tr class="text-center">
             <th scope="col">#</th>
-            <th scope="col"> نام محصول</th>
-            <th scope="col">قیمت</th>
-            <th scope="col">عملیات</th>
+            <th scope="col">مشتری</th>
+            <th scope="col">وضعیت</th>
+<!--            <th scope="col">عملیات</th>-->
         </tr>
         </thead>
         <tbody>
-        <tr class="text-center" v-for="(product,key) in laravelData.data">
+        <tr class="text-center" v-for="(customer,key) in laravelData.data" @click="clicked(customer)">
             <td v-if="page ==1" >
                 {{ key + 1}}
             </td>
             <td v-else>
                 {{(((page-1) *9) + key + 1)}}
             </td>
-            <td >{{product.name}}</td>
-            <td v-if="product.price ">{{groupDigit(product.price)}}</td>
-            <td v-else></td>
-            <td >{{date(product.created_at)}}</td>
-            <td>
-                <a :href="'/product/'+product.id + '/edit'" data-toggle="tooltip"
-                   data-title="ویرایش">
-                    <span class="fa fa-edit blue"></span>
+            <td >{{customer.customer.name}}</td>
+            <td v-if="customer.status === 0">عادی</td>
+            <td v-else-if="customer.status ===1">تعلیق</td>
+            <td v-else-if="customer.status === 2">پایان</td>
+            <td v-else-if="customer.status === 3">گارانتی</td>
+            <td v-else-if="customer.status === 4">منتظر خرید</td>
+            <td v-else-if="customer.status === 5">در حال بستن</td>
 
-                </a>
-                |
+<!--                |-->
 
-                <a @click="deleted(product.id)" class="deleteRecord">
-                    <span class="fa fa-trash red"></span>
-                </a>
+<!--&lt;!&ndash;                <a @click="deleted(event.id)" class="deleteRecord">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="fa fa-trash red"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
 
-            </td>
+<!--            </td>-->
         </tr>
         </tbody>
     </table>
@@ -52,20 +55,34 @@
 
 <script>
 import Swal from 'sweetalert2/dist/sweetalert2.js'
-
 export default {
     data(){
         return{
             laravelData:{},
-            page :1,
+            find :'',
+            page :'',
+            status :'',
             csrf: document.head.querySelector('meta[name="csrf-token"]').content,
         }
     },
-    name: "productComponent",
+    name: "eventComponent",
     mounted() {
         this.getData();
+        this.status = 0
     },
     methods:{
+        clicked(customer){
+          location.replace('/events/'+ customer.customer.id)
+        },
+        search(){
+            axios.get('/api/get-search-customer',{
+              params:{
+                  name : this.find,
+              }
+            }).then(res =>{
+                    this.laravelData = res.data
+                })
+        },
         groupDigit(num){
             num = Number(num)
             var str = num.toString().split('.');
@@ -79,7 +96,7 @@ export default {
         },
         getData(page = 1){
             this.page = page;
-            axios.get('/api/get-product?page=' + page)
+            axios.get('/api/get-support?page=' + page)
                 .then(res =>{
                    this.laravelData = res.data.data
                 })
@@ -106,7 +123,7 @@ export default {
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/product/'+id)
+                    axios.delete('/events/'+id)
                         .then(res =>{
                             window.location.reload()
                         })

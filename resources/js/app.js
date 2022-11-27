@@ -44,6 +44,7 @@ Vue.component('vendor', require('./components/VendorComponent.vue').default);
 Vue.component('product', require('./components/ProductComponent.vue').default);
 Vue.component('support', require('./components/SupportComponent.vue').default);
 Vue.component('task', require('./components/TaskComponent.vue').default);
+Vue.component('event', require('./components/EventComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

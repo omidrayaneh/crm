@@ -114,6 +114,7 @@
                                    <ul class="dropdown-menu  dropdown-menu-right text-right  " >
                                        <li><a class="dropdown-item" href="/supports">{{__('variable.Supports')}}</a></li>
                                        <li><a class="dropdown-item" href="/events">{{__('variable.Events')}}</a></li>
+                                       <li><a class="dropdown-item" href="{{route('events.all')}}">{{__('variable.Last_Events')}}</a></li>
 
                                        <li><a class="dropdown-item" href="/tasks">{{__('variable.Tasks')}}</a></li>
                                    </ul>

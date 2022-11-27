@@ -25,6 +25,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/product', 'ProductController');
     Route::resource('/supports', 'SupportController');
     Route::resource('/tasks', 'TaskController');
+    Route::get('/events/all', 'EventController@all')->name('events.all');
     Route::resource('/events', 'EventController');
 });
 

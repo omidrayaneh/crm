@@ -23,6 +23,7 @@ return [
     'Supports' => 'پشتیبانی ها',
     'Support' => 'پشتیبانی',
     'Events' => 'رویدادها',
+    'Last_Events' => 'آخرین رویدادها',
     'Latest_Support' => 'آخرین پشتیبانی ها',
     'Actions' => 'فعالیت ها',
     'Start_date' => 'تاریخ شروع',

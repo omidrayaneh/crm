@@ -8,10 +8,17 @@ use App\Http\Requests\EventRequest;
 use App\Support;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+    public function all()
+    {
+      //  $costs = Event::sum('cost');
+        $user = auth()->user()->name;
+        $events = Event::with('user','customer')->orderBy('id','desc')->limit(10)->get();
+        return view('events.all',compact(['user','events']));
+
+    }
     public function index()
     {
         return view('events.index');
@@ -59,10 +66,6 @@ class EventController extends Controller
         $event->save();
 
         toastr()->success('ثبت شد');
-        $customer =  Customer::findOrFail($request['customer_id']);
-        $user = auth()->user()->name;
-        $events = Event::where('customer_id',$request['customer_id'])->paginate(2);
-      //  return view('events.create',compact(['customer','user','events']));
        return redirect()->back();
     }
 

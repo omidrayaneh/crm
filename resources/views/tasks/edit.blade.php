@@ -56,7 +56,7 @@
                     <select id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status"  autocomplete="user_name">
                         <option value="">{{(__('variable.Select'))}}</option>
                         <option @if($task->status ==0) selected @endif value="0">جدید</option>
-                        <option @if($task->status ==1) selected @endif value="1">در حال اجر</option>
+                        <option @if($task->status ==1) selected @endif value="1">در حال اجرا</option>
                         <option @if($task->status ==2) selected @endif value="2">پایان یافته</option>
                     </select>
                     @error('status')

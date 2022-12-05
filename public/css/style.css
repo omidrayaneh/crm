@@ -139,6 +139,9 @@ body {
 .yellow{
     color: yellow;
 }
+.green{
+    color: green !important;
+}
 .orangered{
     color: orangered;
 }

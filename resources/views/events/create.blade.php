@@ -78,13 +78,7 @@
             @endforeach
             </tbody>
         </table>
-        <br>
-        <div class="row mb-2 ml-5 " style="margin-top: -18px">
 
-            <div class="text-left col">
-                <span> جمع کل : </span> <span class="orangered"> {{number_format($costs)}} </span>
-            </div>
-        </div>
 
     </div>
 @endsection

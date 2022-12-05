@@ -28,7 +28,7 @@ class SupportRequired extends FormRequest
             'start_date'=>'required',
             'end_date'=>'required',
             'status'=>'required',
-            'price'=>'required|numeric',
+          //  'price'=>'required|numeric',
         ];
     }
     public function messages()
@@ -38,8 +38,8 @@ class SupportRequired extends FormRequest
             'start_date.required' => 'تاریخ شروع الزامیست',
             'end_date.required' => 'تاریخ پایان الزامیست',
             'status.required' => 'وضعیت الزامیست',
-            'price.required' => 'قیمت لزامیست',
-            'price.numeric' => 'قیمت را صحیح وارد کنید',
+         //   'price.required' => 'قیمت لزامیست',
+            //'price.numeric' => 'قیمت را صحیح وارد کنید',
         ];
     }
 }

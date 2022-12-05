@@ -2218,6 +2218,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       laravelData: {},
+      cost: 0,
+      cost1: 0,
+      cost2: 0,
       page: 1,
       csrf: document.head.querySelector('meta[name="csrf-token"]').content
     };
@@ -2244,6 +2247,9 @@ __webpack_require__.r(__webpack_exports__);
       this.page = page;
       axios.get('/api/get-support?page=' + page).then(function (res) {
         _this.laravelData = res.data.data;
+        _this.cost1 = res.data.cost1 - 0;
+        _this.cost2 = res.data.cost2 - 0;
+        _this.cost = _this.cost1 + _this.cost2;
       });
     },
     date: function date(time) {
@@ -2845,7 +2851,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.laravelData.data, function (support, key) {
     return _c("tr", {
       staticClass: "text-center"
-    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.customer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.start_date))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.end_date))]), _vm._v(" "), support.status === 0 ? _c("td", [_vm._v("عادی")]) : support.status === 1 ? _c("td", [_vm._v("تعلیق")]) : support.status === 2 ? _c("td", [_vm._v("پایان")]) : support.status === 3 ? _c("td", [_vm._v("گارانتی")]) : support.status === 4 ? _c("td", [_vm._v("منتظر خرید")]) : support.status === 5 ? _c("td", [_vm._v("در حال بستن")]) : _vm._e(), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.groupDigit(support.price)))]), _vm._v(" "), _c("td", [_c("a", {
+    }, [_vm.page == 1 ? _c("td", [_vm._v("\n                " + _vm._s(key + 1) + "\n            ")]) : _c("td", [_vm._v("\n                " + _vm._s((_vm.page - 1) * 9 + key + 1) + "\n            ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.customer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.user.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.start_date))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(support.end_date))]), _vm._v(" "), support.status === 0 ? _c("td", [_vm._v("عادی")]) : support.status === 1 ? _c("td", [_vm._v("تعلیق")]) : support.status === 2 ? _c("td", [_vm._v("پایان")]) : support.status === 3 ? _c("td", [_vm._v("گارانتی")]) : support.status === 4 ? _c("td", [_vm._v("منتظر خرید")]) : support.status === 5 ? _c("td", [_vm._v("در حال بستن")]) : _vm._e(), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.groupDigit(support.price1)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.groupDigit(support.price2)))]), _vm._v(" "), _c("td", [_c("a", {
       attrs: {
         href: "/supports/" + support.id + "/edit",
         "data-toggle": "tooltip",
@@ -2863,7 +2869,20 @@ var render = function render() {
     }, [_c("span", {
       staticClass: "fa fa-trash red"
     })])])]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
+    staticClass: "row mb-2 ml-5",
+    staticStyle: {
+      "margin-top": "-18px"
+    }
+  }, [_c("div", {
+    staticClass: "text-left col"
+  }, [_c("div", [_c("span", [_vm._v(" جمع روزانه : ")]), _vm._v(" "), _c("span", {
+    staticClass: "green"
+  }, [_vm._v(" " + _vm._s(_vm.groupDigit(_vm.cost1)) + " ")])]), _vm._v(" "), _c("div", [_c("span", [_vm._v(" جمع شبانه : ")]), _vm._v(" "), _c("span", {
+    staticClass: "orangered"
+  }, [_vm._v(" " + _vm._s(_vm.groupDigit(_vm.cost2)) + " ")])]), _vm._v(" "), _c("div", [_c("span", [_vm._v(" جمع کل : ")]), _vm._v(" "), _c("span", {
+    staticClass: "blue"
+  }, [_vm._v(" " + _vm._s(_vm.groupDigit(_vm.cost)) + " ")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-12 d-print-none d-flex justify-content-center",
     staticStyle: {
       "margin-bottom": "0"
@@ -2911,7 +2930,11 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("مبلغ")])])]);
+  }, [_vm._v("مبلغ روزانه")]), _vm._v(" "), _c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("مبلغ شبانه")])])]);
 }];
 render._withStripped = true;
 

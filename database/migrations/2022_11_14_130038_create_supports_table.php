@@ -19,6 +19,7 @@ class CreateSupportsTable extends Migration
             $table->string('end_date');
             $table->tinyInteger('status');
             $table->decimal('price', 13, 0);
+            $table->decimal('price1', 13, 0);
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -17,9 +17,13 @@ class SupportController extends Controller
 
     public function getData()
     {
+        $cost1 = Support::sum('price1');
+        $cost2 = Support::sum('price2');
         $supports =Support::with(['user','customer'])->paginate(2);
         $responce = [
             'data'=> $supports,
+            'cost1'=> $cost1,
+            'cost2'=> $cost2,
             'message'=>'success'
         ];
         return response()->json($responce,200);
@@ -35,7 +39,7 @@ class SupportController extends Controller
 
     public function store(SupportRequired $request)
     {
-        $inputs = $request->only(['customer_id','start_date','end_date','status','price']);
+        $inputs = $request->only(['customer_id','start_date','end_date','status','price1','price2']);
 
         $support = new Support();
         $support->customer_id = $inputs['customer_id'];
@@ -43,7 +47,8 @@ class SupportController extends Controller
         $support->start_date = $inputs['start_date'];
         $support->end_date = $inputs['end_date'];
         $support->status = $inputs['status'];
-        $support->price = $inputs['price'];
+        $support->price1 = $inputs['price1'];
+        $support->price2 = $inputs['price2'];
 
         $support->save();
         toastr()->success('ثبت شد');
@@ -66,7 +71,7 @@ class SupportController extends Controller
 
     public function update(SupportRequired $request, $id)
     {
-        $inputs = $request->only(['customer_id','start_date','end_date','status','price']);
+        $inputs = $request->only(['customer_id','start_date','end_date','status','price1','price2']);
 
 
 
@@ -76,7 +81,8 @@ class SupportController extends Controller
         $support->start_date = $inputs['start_date'];
         $support->end_date = $inputs['end_date'];
         $support->status = $inputs['status'];
-        $support->price = $inputs['price'];
+        $support->price1 = $inputs['price1'];
+        $support->price2 = $inputs['price2'];
 
 
         $support->save();

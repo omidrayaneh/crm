@@ -15,7 +15,8 @@
             <th scope="col">تاریخ شروع</th>
             <th scope="3">تاریخ پایان</th>
             <th scope="col">وضعیت</th>
-            <th scope="col">مبلغ</th>
+            <th scope="col">مبلغ روزانه</th>
+            <th scope="col">مبلغ شبانه</th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +37,8 @@
             <td v-else-if="support.status === 3">گارانتی</td>
             <td v-else-if="support.status === 4">منتظر خرید</td>
             <td v-else-if="support.status === 5">در حال بستن</td>
-            <td >{{groupDigit(support.price)}}</td>
+            <td >{{groupDigit(support.price1)}}</td>
+            <td >{{groupDigit(support.price2)}}</td>
             <td>
                 <a :href="'/supports/'+support.id + '/edit'" data-toggle="tooltip"
                    data-title="ویرایش">
@@ -52,6 +54,22 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <div class="row mb-2 ml-5 " style="margin-top: -18px">
+
+        <div class="text-left col">
+                <div >
+                    <span> جمع روزانه : </span> <span class="green"> {{ groupDigit(cost1) }} </span>
+                </div>
+                <div >
+                    <span> جمع شبانه : </span> <span class="orangered"> {{ groupDigit(cost2) }} </span>
+                </div>
+            <div >
+                <span> جمع کل : </span> <span class="blue"> {{ groupDigit(cost) }} </span>
+            </div>
+        </div>
+
+    </div>
     <div  class="col-sm-12 d-print-none d-flex justify-content-center" style="margin-bottom: 0">
 
     <pagination  :data="laravelData" :limit="5" @pagination-change-page="getData"></pagination>
@@ -65,6 +83,9 @@ export default {
     data(){
         return{
             laravelData:{},
+            cost:0,
+            cost1:0,
+            cost2:0,
             page :1,
             csrf: document.head.querySelector('meta[name="csrf-token"]').content,
         }
@@ -91,6 +112,9 @@ export default {
             axios.get('/api/get-support?page=' + page)
                 .then(res =>{
                    this.laravelData = res.data.data
+                   this.cost1 = res.data.cost1 -0
+                   this.cost2 = res.data.cost2 -0
+                   this.cost =this.cost1+this.cost2
                 })
         },
         date(time){

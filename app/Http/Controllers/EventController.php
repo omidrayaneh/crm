@@ -71,11 +71,11 @@ class EventController extends Controller
 
     public function show( $id)
     {
-        $costs = Event::where('customer_id',$id)->sum('cost');
+
        $customer =  Customer::findOrFail($id);
        $user = auth()->user()->name;
        $events = Event::with('user')->where('customer_id',$id)->orderBy('id','desc')->get();
-       return view('events.create',compact(['customer','user','events','costs']));
+       return view('events.create',compact(['customer','user','events']));
     }
 
 

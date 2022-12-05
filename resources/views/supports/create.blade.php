@@ -70,12 +70,25 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="price" class="col-md-4 col-form-label text-md-left">{{ __('variable.Price') }}</label>
+                <label for="price1" class="col-md-4 col-form-label text-md-left">{{ __('variable.Price1') }}</label>
 
                 <div class="col-md-6">
-                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}"  autocomplete="price" autofocus>
+                    <input id="price1" type="text" class="form-control @error('price1') is-invalid @enderror" name="price1" value="{{ old('price1') }}"  autocomplete="price1" autofocus>
 
-                    @error('price')
+                    @error('price1')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="price2" class="col-md-4 col-form-label text-md-left">{{ __('variable.Price2') }}</label>
+
+                <div class="col-md-6">
+                    <input id="price2" type="text" class="form-control @error('price2') is-invalid @enderror" name="price2" value="{{ old('price2') }}"  autocomplete="price2" autofocus>
+
+                    @error('price2')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
